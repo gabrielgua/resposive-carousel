@@ -47,10 +47,14 @@ export class AppComponent {
     },
   ]
 
-  carouselWidth: number = 880; // max-width of the carousel component in px
+  carouselWidth: number = 0;
   positionX: number = 0; // x position of the carousel component, updating this number moves the carousel
   gapBetweenItems: number = 16; // gap between items in the carousel in px
   currentIndex: number = 0;
+
+  getInitialCarouselWidth(initialWidth: number) {
+    this.updateCarouselWidth(initialWidth);    
+  }
 
   updateCarouselWidth(width: number) {
     this.carouselWidth = width;
@@ -68,5 +72,9 @@ export class AppComponent {
   goToPrevious(): void {
     const isFirstItem = this.currentIndex === 0;
     this.currentIndex = isFirstItem ? this.items.length - 1 : this.currentIndex - 1;
+  }
+
+  goTo(index: number) {
+    this.currentIndex = index;
   }
 }
