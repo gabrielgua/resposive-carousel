@@ -3,8 +3,16 @@
   
   <section #carousel class="carousel" 
     (window:load)="getInitialCarouselWidth(carousel.offsetWidth)"
-    (window:resize)="updateCarouselWidth(carousel.offsetWidth)">
-    <div class="carousel__item" *ngFor="let item of items" [ngStyle]="{'transform': 'translateX(-' + animate() + 'px)' }">
+    (window:resize)="updateCarouselWidth(carousel.offsetWidth)"
+    (mouseover)="pauseAutoSlide()"
+    (mouseout)="playAutoSlide()"
+    >
+    <div 
+      class="carousel__item" 
+      *ngFor="let item of items; let i = index" 
+      [ngStyle]="{'transform': 'translateX(-' + animate() + 'px)' }"
+      [id]="'item-'+i"
+      >
       <img class="carousel__item__img" src="{{item.urlImage}}" alt="{{item.nome}} - img">
       <div class="carousel__item__info">
         <div class="carousel__item__info__nome-nota-likes">
@@ -34,7 +42,7 @@
     </div>
   
     <div class="carousel__jumpers">
-      <div 
+      <div
         (click)="goTo(i)"
         class="jumpers__jumper" 
         *ngFor="let item of items; let i = index" 

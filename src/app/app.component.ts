@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CarouselItem } from './types/carouselItem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  
   title = 'carousel-example';
 
   items: CarouselItem[] = [
@@ -51,6 +53,13 @@ export class AppComponent {
   positionX: number = 0; // x position of the carousel component, updating this number moves the carousel
   gapBetweenItems: number = 16; // gap between items in the carousel in px
   currentIndex: number = 0;
+  autoPlay: boolean = true;
+  autoPlayIntervalId: any;
+  autoPlayIntervalAmount: number = 5000; //ms
+
+  ngOnInit(): void {
+    this.playAutoSlide();
+  }
 
   getInitialCarouselWidth(initialWidth: number) {
     this.updateCarouselWidth(initialWidth);    
@@ -67,14 +76,36 @@ export class AppComponent {
   goToNext(): void {
     const isLastItem = this.currentIndex === this.items.length - 1; 
     this.currentIndex = isLastItem ? 0 : this.currentIndex + 1;
+    this.resetAutoSlide();
   }
 
   goToPrevious(): void {
     const isFirstItem = this.currentIndex === 0;
     this.currentIndex = isFirstItem ? this.items.length - 1 : this.currentIndex - 1;
+    this.resetAutoSlide();
   }
 
   goTo(index: number) {
     this.currentIndex = index;
+    this.resetAutoSlide();
+  }
+
+  resetAutoSlide(): void {
+    clearInterval(this.autoPlayIntervalId);
+    if (this.autoPlay) {
+      this.autoPlayIntervalId = setInterval(() => {
+        this.goToNext();
+      }, this.autoPlayIntervalAmount)
+    }
+  }
+
+  playAutoSlide(): void {
+    this.autoPlay = true;
+    this.resetAutoSlide();
+  }
+
+  pauseAutoSlide(): void {
+    this.autoPlay = false;
+    this.resetAutoSlide();
   }
 }

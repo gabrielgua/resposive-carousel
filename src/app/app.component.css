@@ -5,6 +5,7 @@
     grid-template-columns: 1fr;
     max-width: fit-content;
     gap: 1rem;
+    
 }
 
 .title {
@@ -18,8 +19,6 @@
     position: relative;
     overflow: hidden;
 }
-
-
 
 .carousel__item {
     min-width: 100%;
@@ -112,8 +111,6 @@
     padding: .4rem;
 }
 
-
-
 .carousel__item__info__descricao > p {
     transform: translateY(40%);
     transition: 300ms ease-in-out;
@@ -144,7 +141,7 @@
 }
 
 .carousel__arrow span {
-    font-size: xx-large;
+    font-size: x-large;
     font-weight: bolder;
 }
 
@@ -155,8 +152,8 @@
 
 .jumpers__jumper {
     background-color: white;
-    width: 1rem;
-    height: 1rem;
+    width: .75rem;
+    height: .75rem;
     border-radius: 50%;
     display: grid;
     place-items: center;
