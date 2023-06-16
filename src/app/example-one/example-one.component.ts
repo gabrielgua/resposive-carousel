@@ -89,7 +89,7 @@ export class ExampleOneComponent {
   }
 
   handleScroll(): void {
-    let scrollOffset = Math.floor(this.carousel.nativeElement.scrollLeft);
+    let scrollOffset = this.carousel.nativeElement.scrollLeft | 0;
     for (let [index, width] of this.carouselWidthMap.entries()) {
       if (scrollOffset === width) this.currentIndex = index;
     }   
