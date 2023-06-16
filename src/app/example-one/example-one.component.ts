@@ -85,10 +85,14 @@ export class ExampleOneComponent {
   }
 
   getScroll(scroll: number): void {
-    this.scroll = Math.floor(scroll);
+    this.scroll = scroll;
+    // this.scroll = Math.floor(scroll);
   }
 
   handleScroll(): void {
+
+
+
     let scrollOffset = this.carousel.nativeElement.scrollLeft | 0;
     for (let [index, width] of this.carouselWidthMap.entries()) {
       if (scrollOffset === width) this.currentIndex = index;
