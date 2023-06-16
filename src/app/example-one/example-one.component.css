@@ -20,6 +20,7 @@
     overflow-y: hidden;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
 }
 
 .carousel::-webkit-scrollbar {

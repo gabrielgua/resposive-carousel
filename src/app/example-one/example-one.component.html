@@ -2,6 +2,7 @@
     <section #carousel class="carousel" 
       (window:resize)="updateCarouselWidth(carousel.offsetWidth)"
       (window:resize)="populateMap(carousel.offsetWidth)"
+      (window:load)="populateMap(carousel.offsetWidth)"
       (scroll)="handleScroll()"
       (mouseover)="pauseAutoSlide()"
       (mouseout)="playAutoSlide()"
@@ -9,7 +10,6 @@
      
       <div class="carousel__item" *ngFor="let item of items; let i = index" >
         <img  
-          (load)="populateMap(carousel.offsetWidth)"
 
           class="carousel__item__img" src="{{item.urlImage}}" alt="{{item.nome}} - img"
         >
