@@ -5,7 +5,6 @@
     grid-template-columns: 1fr;
     max-width: fit-content;
     gap: 1rem;
-    
 }
 
 .title {
@@ -14,24 +13,31 @@
 
 .carousel {
     display: flex;
-    gap: 1rem;
     max-width: var(--carousel-max-width);
     position: relative;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
 }
 
 .carousel__item {
     min-width: 100%;
     position: relative;
+    scroll-snap-align: start;
     transition: transform 300ms ease-in-out; 
 }
 
 .carousel__item::after {
+    top: 0;
     content: '';
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
     box-shadow: inset 0 -200px 80px -80px var(--bg-dark);
 }
 
@@ -57,7 +63,7 @@
 }
 
 
-.carousel__item:hover {
+/* .carousel__item:hover {
     .carousel__item__img {
         scale: 1.05;
         transition: 200ms ease-in-out;
@@ -73,7 +79,7 @@
         transform: translateY(0%);
         transition: 400ms ease-in-out;
     }
-}
+} */
 
 
 .carousel__item__info__nome-nota-likes {    

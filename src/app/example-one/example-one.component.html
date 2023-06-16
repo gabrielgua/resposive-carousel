@@ -1,22 +1,23 @@
 <div class="container">    
     <section #carousel class="carousel" 
-      (window:load)="getInitialCarouselWidth(carousel.offsetWidth)"
       (window:resize)="updateCarouselWidth(carousel.offsetWidth)"
-      (mouseover)="pauseAutoSlide()"
-      (mouseout)="playAutoSlide()"
+      (window:resize)="populateMap(carousel.offsetWidth)"
+      (scroll)="handleScroll()"
+      
       >
-      <div 
-        class="carousel__item" 
-        *ngFor="let item of items; let i = index" 
-        [ngStyle]="{'transform': 'translateX(-' + animate() + 'px)' }"
-        [id]="'item-'+i"
+      <!-- (mouseover)="pauseAutoSlide()"
+      (mouseout)="playAutoSlide()" -->
+      <div class="carousel__item" *ngFor="let item of items; let i = index" >
+        <img  
+          (load)="populateMap(carousel.offsetWidth)"
+
+          class="carousel__item__img" src="{{item.urlImage}}" alt="{{item.nome}} - img"
         >
-        <img class="carousel__item__img" src="{{item.urlImage}}" alt="{{item.nome}} - img">
         <div class="carousel__item__info">
           <div class="carousel__item__info__nome-nota-likes">
             <p class="carousel__item__nome singleline-truncate">{{item.nome}}</p>
             <div class="carousel__item__info__icon-display">
-              <p>{{item.nota}} </p>
+              <p>{{item.nota}}</p>
               <span class="material-symbols-rounded carousel__icon--star">star</span>
             </div>
             
@@ -33,7 +34,7 @@
     </section>
   
     <section class="carousel__controls">
-      <div class="carousel__arrow carousel__arrow--prev" (click)="goToPrevious()">
+      <div class="carousel__arrow carousel__arrow--prev" (click)="scrollToPrevious()">
         <span class="material-symbols-rounded">
           arrow_back_ios_new
         </span>
@@ -41,14 +42,14 @@
     
       <div class="carousel__jumpers">
         <div
-          (click)="goTo(i)"
+          (click)="scrollToIndex(i)"
           class="jumpers__jumper" 
           *ngFor="let item of items; let i = index" 
           [ngClass]="i === currentIndex ? 'jumpers__jumper--current' : ''">
         </div>
       </div>
     
-      <div class="carousel__arrow carousel__arrow--next" (click)="goToNext()">
+      <div class="carousel__arrow carousel__arrow--next" (click)="scrollToNext()">
         <span class="material-symbols-rounded">
           arrow_forward_ios
         </span>

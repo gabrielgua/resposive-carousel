@@ -3,5 +3,6 @@ export interface CarouselItem {
     nota?: string,
     likes?: number,
     urlImage: string,
+    urlVideo: string,
     descricao?: string,
 }
