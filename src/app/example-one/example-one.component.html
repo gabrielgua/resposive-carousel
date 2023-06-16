@@ -1,6 +1,5 @@
 <div class="container">    
     <section #carousel class="carousel" 
-      (window:resize)="updateCarouselWidth(carousel.offsetWidth)"
       (window:resize)="populateMap(carousel.offsetWidth)"
       (window:load)="populateMap(carousel.offsetWidth)"
       (window:load)="resetCarouselScroll()"
@@ -61,8 +60,9 @@
       </div>
     </section>
 
-    {{carousel.offsetWidth}}
-    <div>{{scroll}}</div>
+    {{ carousel.offsetWidth }}
+    <div>{{ scroll }}</div>
+    <div>{{ carousel.scrollLeft }}</div>
     <div *ngFor="let item of carouselWidthMap.entries()">{{item}}</div>
   
   </div>

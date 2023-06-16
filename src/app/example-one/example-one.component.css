@@ -35,7 +35,7 @@
     position: relative;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    transition: transform 300ms ease-in-out; 
+    /* transition: transform 300ms ease-in-out;  */
 
 }
 
@@ -176,7 +176,6 @@
 .jumpers__jumper--current {
     background-color: var(--bg-dark);
     outline: 3px solid white;
-    transition: 100ms ease-out;
 }
 
 .jumpers__jumper:hover {

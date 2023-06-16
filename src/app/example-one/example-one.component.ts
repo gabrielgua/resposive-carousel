@@ -62,6 +62,7 @@ export class ExampleOneComponent {
   carouselWidthMap = new Map<number, number>;
 
   scroll: number = 0;
+  scrollComplete: number = 0;
 
   
 
@@ -90,10 +91,14 @@ export class ExampleOneComponent {
   handleScroll(): void {
     let scrollOffset = Math.floor(this.carousel.nativeElement.scrollLeft);
     for (let [index, width] of this.carouselWidthMap.entries()) {
-      if (scrollOffset === width || (scrollOffset > width - 5 && scrollOffset < width + 5)) this.currentIndex = index;
+      if (scrollOffset === width) this.currentIndex = index;
     }   
     
     this.resetAutoSlide();
+  }
+
+  scrollWithinRangeOf(scroll: number, width: number, range: number) {
+    return scroll >= (width - range) && scroll <= (width + range);
   }
 
 
