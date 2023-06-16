@@ -80,7 +80,9 @@ export class ExampleOneComponent {
     let scrollOffset = this.carousel.nativeElement.scrollLeft;
     for (let [index, width] of this.carouselWidthMap.entries()) {
       if (scrollOffset === width) this.currentIndex = index;
-    }    
+    }   
+    
+    this.resetAutoSlide();
   }
 
 
