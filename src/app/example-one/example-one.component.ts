@@ -61,6 +61,8 @@ export class ExampleOneComponent {
 
   carouselWidthMap = new Map<number, number>;
 
+  scroll: number = 0;
+
   
 
   ngOnInit(): void {
@@ -81,8 +83,12 @@ export class ExampleOneComponent {
     this.updateCarouselWidth(width);    
   }
 
+  getScroll(scroll: number): void {
+    this.scroll = Math.floor(scroll);
+  }
+
   handleScroll(): void {
-    let scrollOffset = this.carousel.nativeElement.scrollLeft;
+    let scrollOffset = Math.floor(this.carousel.nativeElement.scrollLeft);
     for (let [index, width] of this.carouselWidthMap.entries()) {
       if (scrollOffset === width) this.currentIndex = index;
     }   

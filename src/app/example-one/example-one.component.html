@@ -5,6 +5,7 @@
       (window:load)="populateMap(carousel.offsetWidth)"
       (window:load)="resetCarouselScroll()"
       (scroll)="handleScroll()"
+      (scroll)="getScroll(carousel.scrollLeft)"
       (mouseout)="playAutoSlide()"
       (mouseover)="pauseAutoSlide()"
       >
@@ -61,7 +62,7 @@
     </section>
 
     {{carousel.offsetWidth}}
-    <div>{{carousel.scrollLeft}}</div>
+    <div>{{scroll}}</div>
     <div *ngFor="let item of carouselWidthMap.entries()">{{item}}</div>
   
   </div>
