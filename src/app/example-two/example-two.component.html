@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
     <div class="carousel">
         <div class="carousel__item carousel__item--selected">
             <img src="{{item.urlImage}}" alt="{{item.nome}} - img.">
@@ -18,5 +19,40 @@
             arrow_forward_ios
         </span>
     </button>
+=======
+    <div 
+        #carousel 
+        class="carousel" 
+        (window:load)="getCarouselWidth(carousel.offsetWidth)"
+        >
+        <div 
+            *ngFor="let item of items; let i = index"
+            [id]="'item-'+i"
+            #carousel_item
+            class="carousel__item"
+            (window:load)="getCarouselItemWidth(carousel_item.offsetWidth)"
+            [ngStyle]="{'transform': 'translateX(-' + positionX + 'px)' }"
+            [ngClass]="{'carousel__item--selected': i === 1}"
+
+            >
+            <img src="{{item.urlImage}}" alt="{{item.nome}} - img.">
+        </div>
+    
+    
+        <button class="carousel__arrow carousel__arrow--prev" (click)="goToPrevious()">
+            <span class="material-symbols-rounded">
+                arrow_back_ios_new
+            </span>
+        </button>
+        <button class="carousel__arrow carousel__arrow--next" (click)="goToNext()">
+            <span class="material-symbols-rounded">
+                arrow_forward_ios
+            </span>
+        </button>
+    
+        
+    
+    </div>
+>>>>>>> 652756ffad449af47ba48df818330234c6e85e43
 </div>
 

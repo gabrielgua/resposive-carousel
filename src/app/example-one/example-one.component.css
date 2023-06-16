@@ -5,6 +5,7 @@
     grid-template-columns: 1fr;
     max-width: fit-content;
     gap: 1rem;
+    
 }
 
 .title {
@@ -23,6 +24,10 @@
 
 .carousel::-webkit-scrollbar {
     display: none;
+    gap: 1rem;
+    max-width: var(--carousel-max-width);
+    position: relative;
+    overflow: hidden;
 }
 
 .carousel__item {
@@ -63,7 +68,7 @@
 }
 
 
-/* .carousel__item:hover {
+.carousel__item:hover {
     .carousel__item__img {
         scale: 1.05;
         transition: 200ms ease-in-out;
@@ -79,7 +84,7 @@
         transform: translateY(0%);
         transition: 400ms ease-in-out;
     }
-} */
+}
 
 
 .carousel__item__info__nome-nota-likes {    

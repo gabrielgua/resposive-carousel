@@ -61,6 +61,8 @@ export class ExampleOneComponent {
 
   carouselWidthMap = new Map<number, number>;
 
+  
+
   ngOnInit(): void {
     this.playAutoSlide();
   }
@@ -81,6 +83,10 @@ export class ExampleOneComponent {
     }    
   }
 
+
+  getInitialCarouselWidth(initialWidth: number) {
+    this.updateCarouselWidth(initialWidth);    
+  }
 
   updateCarouselWidth(width: number) {
     this.carouselWidth = width;
@@ -104,8 +110,9 @@ export class ExampleOneComponent {
   scrollToPrevious(): void {
     const isFirstItem = this.currentIndex === 0; 
     this.currentIndex = isFirstItem ? this.items.length - 1 : this.currentIndex - 1;
-    this.scrollCarousel(this.currentIndex * this.carouselWidth);
+    this.scrollCarousel(this.currentIndex * this.carouselWidth); 
   }
+  
 
   resetAutoSlide(): void {
     clearInterval(this.autoPlayIntervalId);
