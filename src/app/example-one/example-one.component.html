@@ -3,13 +3,15 @@
       (window:resize)="updateCarouselWidth(carousel.offsetWidth)"
       (window:resize)="populateMap(carousel.offsetWidth)"
       (window:load)="populateMap(carousel.offsetWidth)"
+      (window:load)="resetCarouselScroll()"
       (scroll)="handleScroll()"
-      (mouseover)="pauseAutoSlide()"
       (mouseout)="playAutoSlide()"
+      (mouseover)="pauseAutoSlide()"
       >
      
       <div class="carousel__item" *ngFor="let item of items; let i = index" >
         <img  
+         
 
           class="carousel__item__img" src="{{item.urlImage}}" alt="{{item.nome}} - img"
         >
@@ -59,6 +61,7 @@
     </section>
 
     {{carousel.offsetWidth}}
+    <div>{{carousel.scrollLeft}}</div>
     <div *ngFor="let item of carouselWidthMap.entries()">{{item}}</div>
   
   </div>

@@ -64,7 +64,12 @@ export class ExampleOneComponent {
   
 
   ngOnInit(): void {
-    this.playAutoSlide();
+    // this.playAutoSlide();
+  }
+
+  resetCarouselScroll(): void {
+    this.carousel.nativeElement.scrollLeft = 0;
+
   }
 
   populateMap(width: number) {
